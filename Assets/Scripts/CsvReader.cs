@@ -5,11 +5,6 @@ using System.IO;
 
 public class CsvReader : MonoBehaviour
 {
-    void Start()
-    {
-        MakeUV();
-    }
-
     public Vector3[] MakeVerticles()
     {
         StreamReader sr = null;
@@ -46,7 +41,7 @@ public class CsvReader : MonoBehaviour
 
             //Debug.Log(data_values[0] + data_values[1] + data_values[2]);
         }
-        Debug.Log(squareVer[0] + "  " + squareVer[1] + "  " + squareVer[2] + "  " + squareVer[3]);
+        //Debug.Log(squareVer[0] + "  " + squareVer[1] + "  " + squareVer[2] + "  " + squareVer[3]);
         return squareVer;
     }
 
@@ -115,7 +110,7 @@ public class CsvReader : MonoBehaviour
             squareUV[count] = uv;
             ++count;
         }
-        Debug.Log(squareUV[0] + "  " + squareUV[1] + "  " + squareUV[2] + "  " + squareUV[3]);
+        //Debug.Log(squareUV[0] + "  " + squareUV[1] + "  " + squareUV[2] + "  " + squareUV[3]);
         return squareUV; 
     }
 }
