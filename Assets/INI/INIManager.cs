@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class INIManager : MonoBehaviour
 {
     INIParser ini = new INIParser();
     public Color[] colorInfo;
-    // Start is called before the first frame update
     void Start()
     {
         LoadColorINI(Application.dataPath + "/INI/" + "Color.ini");
@@ -15,13 +13,9 @@ public class INIManager : MonoBehaviour
         //Debug.Log("INI" + ini.FileName);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void LoadColorINI(string path)
     {
+        //파라미터 값을 String으로 받아옴
         ini.Open(path);
         //Value : 카운트 41개
         int colorCount = int.Parse(ini.ReadValue("Color Count", "count", "0"));

@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using ES3Internal;
 
 public class Square_MeshCreator : Mesh_Creator
 {
     CsvReader csv = new CsvReader();
 
     public INIManager ini;
+    public SubObect SubObject;
 
-    // Start is called before the first frame update
     void Start()
     {
         var p = FindObjectOfType<UnityEventTest>();
         p.A.AddListener(DelegateCreateMesh);
-
+        SavePosition();
     }
 
     void DelegateCreateMesh()
@@ -59,7 +61,7 @@ public class Square_MeshCreator : Mesh_Creator
             //버텍스 순서대로 폴리곤을 연결하여 만듬
             
             //front
-            //좌상,우상,좌하 = 삼각형
+            //좌상,우상,우하 = 삼각형
             triRender[0], triRender[1], triRender[2],
             //좌상,좌하,우하 = 삼각형
             triRender[3], triRender[4], triRender[5],
@@ -150,6 +152,21 @@ public class Square_MeshCreator : Mesh_Creator
         mesh.RecalculateNormals();
         //Main Texture로 지정해준 후, Texture의 변수를 넣어준다.
         //material.SetTexture("_MainTex", image);
-        material.color = ini.colorInfo[20];
+        material.color = ini.colorInfo[40];
     }
+
+    void SavePosition()
+    {
+        ES3.Save<float>("Transform",800f);
+    }
+}
+
+
+
+[Serializable]
+public class SubObect
+{
+    public GameObject supObj;
+    public string name;
+    public int level = 1;
 }

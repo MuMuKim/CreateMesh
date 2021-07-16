@@ -17,6 +17,7 @@ public class CsvReader : MonoBehaviour
         //카운트
         int count = 0;
         bool endOfFile = false;
+
         while (!endOfFile)
         {
             string data_String = sr.ReadLine();
@@ -50,13 +51,12 @@ public class CsvReader : MonoBehaviour
         StreamReader sr = null;
 
         sr = new StreamReader(Application.dataPath + "/CSV/" + "TriTest.csv");
-        //폴리곤 넘버를 담을 변수를 만든다
-        int triangle = new int();
         //폴리곤을 담아둘 배열을 만든다
         int[] squareTri = null;
         //카운트
         int count = 0;
         bool endOfFile = false;
+
         while (!endOfFile)
         {
             string data_String = sr.ReadLine();
@@ -93,6 +93,7 @@ public class CsvReader : MonoBehaviour
         Vector2[] squareUV = new Vector2[24];
         //카운트
         int count = 0;
+
         for (int i = 0; i < squareUV.Length; i++)
         {
             string dataString = sr.ReadLine();

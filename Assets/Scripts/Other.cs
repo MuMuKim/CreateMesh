@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Other : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         var p = FindObjectOfType<UnityEventTest>();
@@ -12,11 +11,6 @@ public class Other : MonoBehaviour
         p.b += Test;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnInputSpace()
     {
         Debug.Log("스페이스");
