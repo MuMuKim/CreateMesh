@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class INIManager : MonoBehaviour
 {
     INIParser ini = new INIParser();
     public Color[] colorInfo;
+    int colorCount;
+
+    public Image legendImage;
     void Start()
     {
         LoadColorINI(Application.dataPath + "/INI/" + "Color.ini");
@@ -18,7 +22,7 @@ public class INIManager : MonoBehaviour
         //파라미터 값을 String으로 받아옴
         ini.Open(path);
         //Value : 카운트 41개
-        int colorCount = int.Parse(ini.ReadValue("Color Count", "count", "0"));
+        colorCount = int.Parse(ini.ReadValue("Color Count", "count", "0"));
 
         //컬러 배열의 크기를 카운트(41)로 초기화
         colorInfo = new Color[colorCount];
@@ -39,5 +43,15 @@ public class INIManager : MonoBehaviour
         }
 
         ini.Close();
+        CreateLegendTexture();
+    }
+
+    void CreateLegendTexture()
+    {
+        Texture2D legendTex = new Texture2D(1, colorCount);
+        legendTex.SetPixels(colorInfo);
+        legendTex.Apply(false);
+
+        legendImage.sprite = Sprite.Create(legendTex, new Rect(0.0f, 0.0f, legendTex.width, legendTex.height), new Vector2(0.5f, 0.5f), 100.0f);
     }
 }
